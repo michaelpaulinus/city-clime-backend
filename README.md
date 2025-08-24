@@ -24,3 +24,7 @@ To run a development server
 ```bash
 npm run dev
 ```
+
+## Hosting
+
+Backend can be hosted for free on [Render] (https://render.com/)
