@@ -28,7 +28,29 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
-      '@typescript-eslint/no-unsafe-argument': 'warn'
+      '@typescript-eslint/no-unsafe-argument': 'warn',
+
+      // ✅ Prettier options
+      'prettier/prettier': [
+        'error',
+        {
+          arrowParens: 'avoid',
+          printWidth: 100,
+          singleQuote: true,
+          trailingComma: 'none',
+          singleAttributePerLine: true,
+          overrides: [
+            {
+              files: '*.md',
+              options: { tabWidth: 4 },
+            },
+            {
+              files: ['*.yaml', '*.yml'],
+              options: { bracketSpacing: false },
+            },
+          ],
+        },
+      ],
     },
   },
 );
