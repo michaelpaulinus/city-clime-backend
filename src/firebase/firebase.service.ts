@@ -3,6 +3,7 @@ import { doc, setDoc, getDocs, query, collection, getFirestore } from 'firebase/
 import { initializeApp } from 'firebase/app';
 import ForecastWeather from 'src/common/dtos/forecast-weather';
 import { ExternalWeatherApiService } from 'src/external-weather-api/external-weather-api.service';
+import cities from 'src/data/cities';
 
 @Injectable()
 export class FirebaseService {
@@ -42,5 +43,9 @@ export class FirebaseService {
     const forecastedWeather = querySnapshot.docs.map(doc => doc.data() as ForecastWeather);
 
     return forecastedWeather;
+  }
+
+  async updateForecastsForAllCities() {
+    await Promise.all(cities.map(city => this.addForecastedWeather(city)));
   }
 }

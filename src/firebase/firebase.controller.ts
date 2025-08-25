@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Put } from '@nestjs/common';
+import { Controller, Get, Put } from '@nestjs/common';
 import { FirebaseService } from './firebase.service';
 @Controller('weather')
 export class FirebaseController {
@@ -9,8 +9,8 @@ export class FirebaseController {
     return await this.firebaseService.getForecastedWeather();
   }
 
-  @Put('forecast/:location')
-  async addForecastedWeather(@Param('location') location: string) {
-    await this.firebaseService.addForecastedWeather(location);
+  @Put('forecast')
+  async addForecastedWeather() {
+    await this.firebaseService.updateForecastsForAllCities();
   }
 }
